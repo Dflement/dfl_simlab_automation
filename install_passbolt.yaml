@@ -1,0 +1,9 @@
+- hosts: all
+  become: true
+  roles:
+   - common
+
+- hosts: passbolt_server
+  become: true
+  roles:
+   - docker_install
