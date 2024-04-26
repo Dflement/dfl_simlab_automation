@@ -1,12 +1,11 @@
-# - hosts: all
-#   become: true
-#   roles:
-#    - common
+- hosts: all
+  become: true
+  roles:
+   - initialise
 
 - hosts: passbolt_server
   become: true
   roles:
-  #  - docker_install
-  #  - db_install
-  #  - passbolt_install
-   - passbolt_adminuser
+    - docker_install
+    - passbolt_prep
+    - passbolt_start
