@@ -1,2 +1,20 @@
 ---
-# tasks file for initialise
+- name: Update serverpark
+  ansible.builtin.package:
+    name: "*"
+    state: latest
+  become: true
+
+- name: Install Neovim
+  ansible.builtin.apt:
+    name: neovim
+    state: present
+  when: ansible_distribution in ["Debian", "Ubuntu"]
+
+- name: Install vim
+  ansible.builtin.dnf:
+    name: vim-enhanced
+    state: present
+  when: ansible_distribution == "Fedora"
+
+
