@@ -1,0 +1,17 @@
+---
+- name: Create Passbolt working directory
+  ansible.builtin.file:
+    path: /home/ansible/passbolt
+    state: directory
+
+- name: Download docker-compose file
+  ansible.builtin.get_url:
+    url: https://download.passbolt.com/ce/docker/docker-compose-ce.yaml
+    dest: /home/ansible/passbolt/docker-compose.yaml
+
+- name: Generate docker-compose from docker-compose-template
+  template: 
+    src: "{{ docker_compose_template }}"
+    dest: /home/ansible/passbolt/docker-compose.yaml
+    mode: 0644
+

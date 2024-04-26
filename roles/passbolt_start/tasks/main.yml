@@ -1,0 +1,18 @@
+---
+# tasks file for passbolt_start
+- name: Docker-compose up
+  community.docker.docker_compose:
+    project_src: /home/ansible/passbolt/
+
+- name: Wait for 20 seconds
+  ansible.builtin.pause:
+    seconds: 20
+
+- name: Register Passbolt user
+  become: true
+  ansible.builtin.command: "docker exec passbolt_passbolt_1 su -m -c 'bin/cake passbolt register_user -u david.flement@student.howest.be -f David -l Flement -r admin' -s /bin/sh www-data"
+  register: passbolt_user_registration
+
+- name: Display passbolt_user_registration variable
+  ansible.builtin.debug:
+    msg: "{{ passbolt_user_registration.stdout_lines | select('match', '^http://203.0.113.25:8081.*$') | list }}"
