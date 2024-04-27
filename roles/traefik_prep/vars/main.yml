@@ -1,0 +1,6 @@
+---
+# vars file for traefik_prep
+traefik: traefik.j2
+headers: headers.j2
+tls: tls.j2
+email: david.flement@telenet.be

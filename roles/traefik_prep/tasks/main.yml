@@ -1,0 +1,23 @@
+- name: Create traefik.yaml file
+  template: 
+    src: "{{ traefik }}"
+    dest: /home/ansible/passbolt/traefik.yaml
+    mode: 0644
+
+- name: Setting up Traefik
+  ansible.builtin.file:
+    path: /home/ansible/passbolt/conf
+    state: directory
+
+- name: Create Traefik headers.yaml file
+  template: 
+    src: "{{ headers }}"
+    dest: /home/ansible/passbolt/conf/headers.yaml
+    mode: 0644
+
+- name: Create Traefik tls.yaml file
+  template: 
+    src: "{{ tls }}"
+    dest: /home/ansible/passbolt/conf/tls.yaml
+    mode: 0644
+
