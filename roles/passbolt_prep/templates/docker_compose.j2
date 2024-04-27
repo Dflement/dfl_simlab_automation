@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     environment:
-      APP_FULL_BASE_URL: https://{{ ip_address }}
+      APP_FULL_BASE_URL: {{ protocol }}://{{ ip_address }}{{ port }}
       DATASOURCES_DEFAULT_HOST: "db"
       DATASOURCES_DEFAULT_USERNAME: "passbolt"
       DATASOURCES_DEFAULT_PASSWORD: "P4ssb0lt"
@@ -36,31 +36,34 @@ services:
         "--",
         "/docker-entrypoint.sh",
       ]
-    labels:
-      traefik.enable: "true"
-      traefik.http.routers.passbolt-http.entrypoints: "web"
-      traefik.http.routers.passbolt-http.rule: "Host(`{{ reverse_dns }}`)"
-      traefik.http.routers.passbolt-http.middlewares: "SslHeader@file"
-      traefik.http.routers.passbolt-https.middlewares: "SslHeader@file"
-      traefik.http.routers.passbolt-https.entrypoints: "websecure"
-      traefik.http.routers.passbolt-https.rule: "Host(`{{ reverse_dns }}`)"
-      traefik.http.routers.passbolt-https.tls: "true"
-      traefik.http.routers.passbolt-https.tls.certresolver: "letsencrypt"
+    #labels:
+    #  traefik.enable: "true"
+    #  traefik.http.routers.passbolt-http.entrypoints: "web"
+    #  traefik.http.routers.passbolt-http.rule: "Host(`{{ reverse_dns }}`)"
+    #  traefik.http.routers.passbolt-http.middlewares: "SslHeader@file"
+    #  traefik.http.routers.passbolt-https.middlewares: "SslHeader@file"
+    #  traefik.http.routers.passbolt-https.entrypoints: "websecure"
+    #  traefik.http.routers.passbolt-https.rule: "Host(`{{ reverse_dns }}`)"
+    #  traefik.http.routers.passbolt-https.tls: "true"
+    #  traefik.http.routers.passbolt-https.tls.certresolver: "letsencrypt"
+    ports:
+      - {{ http_ports }}
+      - 443:443
     #Alternatively for non-root images:
     # - 80:8080
     # - 443:4433
 
-  traefik:
-    image: traefik:2.6
-    restart: always
-    ports:
-      - {{ http_ports }}
-      - 443:443
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik.yaml:/traefik.yaml:ro
-      - ./conf/:/etc/traefik/conf
-      - ./shared/:/shared
+#  traefik:
+#    image: traefik:2.6
+#    restart: always
+#    ports:
+#      - {{ http_ports }}
+#      - 443:443
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+#      - ./traefik.yaml:/traefik.yaml:ro
+#      - ./conf/:/etc/traefik/conf
+#      - ./shared/:/shared
 
 volumes:
   database_volume:
