@@ -1,8 +1,9 @@
 ---
 # tasks file for docker_install
-- name: Install docker.io and docker-compose
+- name: Install docker.io, docker-compose and chrony
   ansible.builtin.apt:
     name:
       - docker.io
       - docker-compose
-    state: present
+    state: latest
+
