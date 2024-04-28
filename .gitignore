@@ -1,0 +1,2 @@
+# Ignore all files in the roles/test/ directory
+roles/test/*
