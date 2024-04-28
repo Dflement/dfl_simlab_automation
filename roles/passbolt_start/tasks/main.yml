@@ -4,9 +4,9 @@
   community.docker.docker_compose:
     project_src: /home/ansible/passbolt/
 
-- name: Wait for 20 seconds
+- name: Wait for 25 seconds
   ansible.builtin.pause:
-    seconds: 20
+    seconds: 25
 
 - name: Register Passbolt user
   become: true
