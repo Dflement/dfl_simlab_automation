@@ -1,2 +1,6 @@
 ---
 # handlers file for initialise
+- name: Restart Chrony service
+  ansible.builtin.service: 
+    name: chrony
+    state: restarted
