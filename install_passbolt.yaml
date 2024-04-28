@@ -3,10 +3,10 @@
   roles:
    - initialise
 
-- hosts: passbolt_server
-  become: true
-  roles:
-    - docker_install
-    - passbolt_prep
-    # - traefik_prep
-    - passbolt_start
+# - hosts: passbolt_server
+#   become: true
+#   roles:
+#     - docker_install
+#     - passbolt_prep
+#     # - traefik_prep
+#     - passbolt_start
