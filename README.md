@@ -27,6 +27,8 @@ This play initializes the system configurations required for Passbolt deployment
   - docker_install
   - passbolt_prep
   - passbolt_start
+ 
+- Be sure to check all the variables, and change them if needed depeding on your network/user
 
 This play is responsible for deploying Passbolt on the designated Passbolt server. It installs Docker, prepares the system for Passbolt installation, and starts the Passbolt service.
 
@@ -38,4 +40,4 @@ This play is responsible for deploying Passbolt on the designated Passbolt serve
 4. Run the playbook using the following command:
 
    ```bash
-   ansible-playbook playbook.yml -i hosts
+   ansible-playbook install_passbook.yaml
