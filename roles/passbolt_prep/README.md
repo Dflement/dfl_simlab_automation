@@ -1,38 +1,29 @@
-Role Name
-=========
+# Passbolt Setup Role
 
-A brief description of the role goes here.
+This Ansible role sets up Passbolt, an open-source password manager, by downloading the necessary Docker Compose configuration file and generating a customized version from a template.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible to be installed on the control node. The target host should have Docker installed and Docker Compose should be available.
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Before running the playbook, make sure to adjust the following variables according to your environment:
 
-Dependencies
-------------
+- `username`: The username under which Passbolt will be installed. This should be a valid username on the target system.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- `protocol`: The protocol used for accessing Passbolt. Typically, this is either "http" or "https".
 
-Example Playbook
-----------------
+- `ip_address`: The IP address or hostname of the server where Passbolt will be hosted.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+- `port`: The port on which Passbolt will be accessible.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- `http_ports`: List of ports to be exposed by the Passbolt container. Adjust this if you need to expose additional ports.
 
-License
--------
+- `docker_compose_template`: Path to the Docker Compose template file. This file will be used to generate the final Docker Compose configuration for Passbolt.
 
-BSD
+## Note
 
-Author Information
-------------------
+Ensure that Docker and Docker Compose are properly configured on the target system before running this role.
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
