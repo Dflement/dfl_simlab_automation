@@ -1,7 +1,9 @@
 ---
 # vars file for passbolt_start
-email: david.flement@student.howest.be
+username: ansible
+waiting_time: 25
+email: david.flement@gmail.com
 firstname: David
-last_name: Flement
-reverse_dns: 25.113.0.203.in-addr.arpa
-ip_address: 203.0.113.25
+last_name: F.
+reverse_dns: 10.200.168.192.in-addr.arpa
+ip_address: 192.168.200.10
