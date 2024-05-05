@@ -1,38 +1,20 @@
-Role Name
-=========
+# Passbolt Start Role
 
-A brief description of the role goes here.
+This Ansible role starts the Passbolt service after the necessary setup steps have been completed.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible to be installed on the control node. The target host should have Docker installed and the Passbolt setup should be completed.
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Before running the playbook, make sure to adjust the following variables according to your environment:
 
-Dependencies
-------------
+- `username`: The username under which Passbolt is installed. This should be the same as the username used in the `passbolt_setup` role.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- `waiting_time`: The time (in seconds) to wait for the database to set up before registering the Passbolt user.
 
-Example Playbook
-----------------
+## Note
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Ensure that Passbolt setup has been completed before running this role.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
