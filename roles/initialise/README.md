@@ -1,38 +1,24 @@
-Role Name
-=========
+# System Update and Configuration Role
 
-A brief description of the role goes here.
+This Ansible role updates the server packages, installs Neovim, Chrony, and configures the timezone.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible to be installed on the control node.
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables can be defined in your playbook or inventory file:
 
-Dependencies
-------------
+- `timezone`: Specifies the desired timezone. Default is `"UTC"`.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Handlers
 
-Example Playbook
-----------------
+This role includes the following handlers:
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+- `Restart Chrony service`: Restarts the Chrony service after changing the timezone.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Dependencies
 
-License
--------
+This role depends on the `community.general.timezone` Ansible collection to configure the timezone.
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
