@@ -2,11 +2,11 @@
 # tasks file for passbolt_start
 - name: Docker-compose up
   community.docker.docker_compose:
-    project_src: /home/ansible/passbolt/
+    project_src: /home/{{ username }}/passbolt
 
-- name: Wait for 25 seconds
+- name: Waiting time for database to set up
   ansible.builtin.pause:
-    seconds: 25
+    seconds: "{{ waiting_time }}"
 
 - name: Register Passbolt user
   become: true
